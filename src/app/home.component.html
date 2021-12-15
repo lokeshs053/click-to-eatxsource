@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div>Welcome
+{{uName}}
+</div>
+<!-- Search Restaurant by city-->
+<form>
+    <label>Search</label>
+    <input type="text" name="city" placeholder="City Name" 
+    [(ngModel)]="city" #cityName >
+    <button type="button" (click)="search()">Search</button>
+</form>
+
+<!-- search By location-->
+<div>
+    Search By Location 
+    <button (click)="searchByLocation()">Location</button>
+</div>
+
+<!-- {{restaurants | json}} -->
+<!-- <div>
+    <div *ngFor="let res of restaurants">
+        <span><a href="{{res.restaurant.url}}">visit Restuarant website</a></span>
+        
+    </div>
+</div> -->
+
+
+<div *ngIf="restaurants">
+    <div>Cusinies in {{restaurants[0].restaurant.location.city}} </div>
+    <button (click)="cuisinesByCity(restaurants[0].restaurant.location.city_id)">
+        Cuisines</button>
+</div>
+
+<!-- cuisines-->
+<div class="container">
+    <!-- <h2 class="text-center" *ngIf="cuisines"></h2> -->
+    <div class="row">
+            <div class="card text-center col-lg-4 col-sm-6 " *ngFor="let k of cuisines">
+                <div class="card text-center ">
+                    <div class="card-header">
+                        <h4 class="font-weight-normal">{{k.cuisine.cuisine_name}}</h4>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+<!-- Restaurants-->
+<div class="container">
+    <h2 class="text-center" *ngIf="restaurants">Restaurants Near You</h2>
+    <div class="row">
+        
+            <div class="card text-center col-lg-4 col-sm-6 " *ngFor="let k of restaurants ">
+                <div class="card text-center ">
+                    <div class="card-header">
+                        <h4 class="font-weight-normal">{{k.restaurant.name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <img src={{k.restaurant.featured_image}} class="img-thumbnail">
+                        <div>{{k.restaurant.cuisines}}</div>
+                        <div>{{k.restaurant.timings}}</div>
+                        <div>{{k.restaurant.location.address}}</div>
+                        <div *ngIf="k.restaurant.has_online_delivery ===1">Online Delivery Available</div>
+                        <a href="{{k.restaurant.url}}" target="_blank">View Restuarant Website</a>
+                        <button   (click)="restaurantDetail(k.restaurant.R.res_id)"
+                         class="btn btn-primary">Click to View More</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>
