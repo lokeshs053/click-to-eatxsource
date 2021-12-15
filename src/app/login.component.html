@@ -1,0 +1,19 @@
+<p>login works!</p>
+
+<form>
+    <div>
+        <span>{{loginError}}</span>
+    </div>
+    <div>
+        <label>Enter Email</label>
+        <input type="text" name="email" [(ngModel)]="email">
+    </div>
+    <div>
+        <label>Enter Password</label>
+        <input type="password" name="password"  [(ngModel)]="password">
+    </div>
+    <div>
+        <button type="button" (click)="login()">Login</button>
+    </div>
+
+</form>
