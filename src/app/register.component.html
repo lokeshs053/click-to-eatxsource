@@ -1,0 +1,31 @@
+<p>register works!</p>
+
+
+<form>
+    <div>
+        <label>Enter Name</label>
+        <input type="text" name="userName" [(ngModel)]="userName" >
+    </div>
+
+    <div>
+        <label>Enter Email</label>
+        <input type="email" name="email" [(ngModel)]="email">
+    </div>
+    <div>
+        <label>Enter Password</label>
+        <input type="password" name="password" [(ngModel)]="password">
+    </div>
+    <div>
+        <label>Enter Mobile Number</label>
+        <input type="number" name="mobNumber" [(ngModel)]="mobNumber">
+    </div>
+    <div>
+        <button type="button" (click)="register()" >Register</button>
+    </div>
+    <span>
+        {{success}}
+    </span>
+</form>
+
+
+<a routerLink="/login" >Click to Login</a>
