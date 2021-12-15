@@ -1,0 +1,11 @@
+
+<!-- <p>restaurant-review works!</p> -->
+
+<div>
+{{userReviews | json }}
+</div>
+<div *ngFor="let review of userReviews">
+    <div>{{review.review.rating}}</div>
+</div>
+
+
